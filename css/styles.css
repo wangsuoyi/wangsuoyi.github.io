@@ -57,6 +57,31 @@
     margin-top: 40px;
   }
   
+  /* Audio Player Styles */
+  #audio-player {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 20px;
+  }
+  
+  #audio-progress {
+    width: 80%;
+    margin: 0 10px;
+  }
+  
+  #play-pause-btn {
+    background-color: #333;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    cursor: pointer;
+  }
+  
+  #play-pause-btn:hover {
+    background-color: #555;
+  }
+  
   /* Mobile-friendly Design */
   @media (max-width: 600px) {
     body {
