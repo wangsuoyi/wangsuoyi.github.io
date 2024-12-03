@@ -36,13 +36,19 @@
   }
   
   .audio-text {
-    font-size: 18px;
-    padding: 10px;
-    margin: 10px 0;
-    background-color: #f1f1f1;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
+    display: block; /* 确保它是一个块级元素 */
+    margin: 10px 0; /* 增加上下间距 */
+    padding: 10px; /* 给文本框添加内边距 */
+    border: 1px solid #ccc; /* 添加边框 */
+    background-color: #f9f9f9; /* 背景色 */
+    border-radius: 5px; /* 圆角 */
+    width: 100%; /* 宽度自适应 */
+    box-sizing: border-box; /* 包括内边距和边框 */
+    white-space: pre-wrap; /* 保证文本换行 */
+    word-wrap: break-word; /* 处理长单词 */
+    font-size: 16px; /* 字体大小 */
+    line-height: 1.6; /* 行高 */
+    overflow: hidden; /* 防止溢出 */
   }
   
   .audio-text:hover {
