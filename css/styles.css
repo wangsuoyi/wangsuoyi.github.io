@@ -49,6 +49,8 @@
     font-size: 16px; /* 字体大小 */
     line-height: 1.6; /* 行高 */
     overflow: hidden; /* 防止溢出 */
+    max-width: calc(33ch); /* 设定每行最多33个字符 */
+    word-break: break-all; /* 防止长单词超出行宽 */
   }
   
   .audio-text:hover {
