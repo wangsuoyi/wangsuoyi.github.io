@@ -14,24 +14,26 @@ function playAudio(src, progressBar) {
         return;
     }
 
-    // 设置当前音频
-    audio.src = src;
-    audio.play();
-    isPlaying = true;
-    currentAudio = audio;
-    currentProgressBar = progressBar;
+    // 如果没有播放过音频，初始化
+    if (!isPlaying) {
+        audio.src = src;
+        audio.play();
+        isPlaying = true;
+        currentAudio = audio;
+        currentProgressBar = progressBar;
+        
+        // 更新进度条
+        audio.ontimeupdate = function () {
+            const progress = (audio.currentTime / audio.duration) * 100;
+            progressBar.value = progress;
+        };
 
-    // 更新进度条
-    audio.ontimeupdate = function() {
-        const progress = (audio.currentTime / audio.duration) * 100;
-        progressBar.value = progress;
-    };
-
-    // 音频播放结束
-    audio.onended = function() {
-        isPlaying = false;
-        currentProgressBar.value = 100;
-    };
+        // 音频播放结束
+        audio.onended = function () {
+            isPlaying = false;
+            currentProgressBar.value = 100;
+        };
+    }
 }
 
 // 处理进度条的拖动
@@ -46,6 +48,7 @@ textItems.forEach(item => {
     const progressBar = item.querySelector('.progress-bar');
     const audioSrc = item.getAttribute('data-audio');
 
+    // 点击播放音频
     item.addEventListener('click', () => {
         playAudio(audioSrc, progressBar);
     });
