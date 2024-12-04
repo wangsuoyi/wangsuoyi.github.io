@@ -1,36 +1,33 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>音频播放网页</title>
-  <link rel="stylesheet" href="css/styles.css"> <!-- 引用CSS文件 -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>文字与音频播放</title>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-
-  <header>
-    <img src="images/logo.png" alt="Logo" id="logo">
-  </header>
-
-  <main>
-    <section class="content">
-      <p class="audio-text" data-audio="audio1.mp3">这是一段文字1，点击播放音频1</p>
-      <p class="audio-text" data-audio="audio/audio2.mp3">这是一段文字2，点击播放音频2</p>
-      <p class="audio-text" data-audio="audio3.mp3">这是一段文字3，点击播放音频3</p>
-    </section>
-
-    <!-- 音频控制面板 -->
-    <div id="audio-player">
-      <button id="play-pause-btn">播放</button>
-      <input type="range" id="audio-progress" value="0" step="1" min="0" max="100">
-      <span id="audio-time">0:00</span>
+    <div class="container">
+        <h1>点击文字播放音频</h1>
+        
+        <div class="content">
+            <div class="text" data-audio="audio1.mp3">
+                <p>这是第一段文字。点击播放对应的音频。</p>
+            </div>
+            <div class="text" data-audio="audio2.mp3">
+                <p>这是第二段文字。点击播放对应的音频。</p>
+            </div>
+            <div class="text" data-audio="audio3.mp3">
+                <p>这是第三段文字。点击播放对应的音频。</p>
+            </div>
+        </div>
+        
+        <audio id="audioPlayer" controls style="display:none;">
+            <source id="audioSource" src="" type="audio/mp3">
+            您的浏览器不支持音频播放。
+        </audio>
     </div>
-  </main>
 
-  <footer>
-    <p>&copy; 2024 Wang Suoyi. All rights reserved.</p>
-  </footer>
-
-  <script src="js/script.js"></script> <!-- 引用JavaScript文件 -->
+    <script src="script.js"></script>
 </body>
 </html>
