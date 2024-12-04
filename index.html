@@ -14,25 +14,36 @@
 
   <main>
     <section class="content">
-      <p class="audio-text" data-audio="audio/audio1.mp3">这是一个测试用低音</p>
-      <p class="audio-text" data-audio="audio/audio2.mp3">这是一支钢琴曲</p>
-      <p class="audio-text" data-audio="audio/audio3.mp3">这是一段文字3，点击播放音频3</p>
-      <p class="audio-text" data-audio="audio/audio1.mp3">这是一个测试用低音</p>
-      <p class="audio-text" data-audio="audio/audio1.mp3">这是一个测试用低音</p>
-      <p class="audio-text" data-audio="audio/audio1.mp3">这是一个测试用低音</p>
-      <p class="audio-text" data-audio="audio/audio1.mp3">这是一个测试用低音</p>
-      <p class="audio-text" data-audio="audio/audio1.mp3">这是一个测试用低音</p>
-      <p class="audio-text" data-audio="audio/audio1.mp3">这是一个测试用低音</p>
-      <p class="audio-text" data-audio="audio/audio1.mp3">这是一个测试用低音</p>
-      
-    </section>
+      <!-- 每段文字下面放置一个音频控制面板 -->
+      <div class="audio-item">
+        <p class="audio-text" data-audio="audio/audio1.mp3">这是一个测试用低音</p>
+        <div class="audio-player">
+          <button class="play-pause-btn">播放</button>
+          <input type="range" class="audio-progress" value="0" step="1" min="0" max="100">
+          <span class="audio-time">0:00</span>
+        </div>
+      </div>
 
-    <!-- 音频控制面板 -->
-    <div id="audio-player">
-      <button id="play-pause-btn">播放</button>
-      <input type="range" id="audio-progress" value="0" step="1" min="0" max="100">
-      <span id="audio-time">0:00</span>
-    </div>
+      <div class="audio-item">
+        <p class="audio-text" data-audio="audio/audio2.mp3">这是一支钢琴曲</p>
+        <div class="audio-player">
+          <button class="play-pause-btn">播放</button>
+          <input type="range" class="audio-progress" value="0" step="1" min="0" max="100">
+          <span class="audio-time">0:00</span>
+        </div>
+      </div>
+
+      <div class="audio-item">
+        <p class="audio-text" data-audio="audio/audio3.mp3">这是一段文字3，点击播放音频3</p>
+        <div class="audio-player">
+          <button class="play-pause-btn">播放</button>
+          <input type="range" class="audio-progress" value="0" step="1" min="0" max="100">
+          <span class="audio-time">0:00</span>
+        </div>
+      </div>
+
+      <!-- 可以继续添加其他段落 -->
+    </section>
   </main>
 
   <footer>
