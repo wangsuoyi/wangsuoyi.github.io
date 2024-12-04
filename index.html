@@ -1,33 +1,41 @@
 <!DOCTYPE html>
-<html lang="zh-CN">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>音频文段播放</title>
+    <title>audio player</title>
     <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
     <div class="container">
-        <h1>欢迎访问 wangsuoyi.github.io</h1>
+        <div class="audio-section">
+            <h2>音频播放</h2>
+            <!-- 显示参考文本 -->
+            <textarea id="audioText" class="audio-text" readonly>
+            这是音频的参考文本，您可以在这里添加更多的内容。它会自动换行。
+            </textarea>
 
-        <!-- 文本段 -->
-        <div class="text-container">
-            <div class="text-item" data-audio="audio/1.mp3">
-                <p>这是第一段文字。1111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111</p>
-                <input type="range" class="progress-bar" value="0" min="0" max="100" step="1" disabled>
+            <!-- 播放/暂停按钮 -->
+            <div class="controls">
+                <button id="playPauseBtn" class="play-btn">播放</button>
             </div>
-            <div class="text-item" data-audio="audio/audio2.mp3">
-                <p>这是第二段文字。</p>
-                <input type="range" class="progress-bar" value="0" min="0" max="100" step="1" disabled>
+
+            <!-- 进度条 -->
+            <input type="range" id="progressBar" class="progress-bar" value="0" step="1" min="0" max="100" />
+            
+            <!-- 多段音频控制 -->
+            <div id="audioButtons">
+                <button class="audio-segment-btn" data-index="0">段落 1</button>
+                <button class="audio-segment-btn" data-index="1">段落 2</button>
+                <button class="audio-segment-btn" data-index="2">段落 3</button>
             </div>
-            <div class="text-item" data-audio="audio/s3.mp3">
-                <p>这是第三段文字。</p>
-                <input type="range" class="progress-bar" value="0" min="0" max="100" step="1" disabled>
-            </div>
-            <!-- 更多文段可以按需添加 -->
+            
+            <!-- 版权声明 -->
+            <footer class="footer">
+                <p>© 2024 版权所有 | 设计和开发: 你的名字</p>
+            </footer>
         </div>
     </div>
-
     <script src="js/script.js"></script>
 </body>
 </html>

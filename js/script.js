@@ -1,63 +1,62 @@
-// 获取所有文段
-const textItems = document.querySelectorAll('.text-item');
-let currentAudio = null;
-let currentProgressBar = null;
+// 获取DOM元素
+const playPauseBtn = document.getElementById("playPauseBtn");
+const progressBar = document.getElementById("progressBar");
+const audioText = document.getElementById("audioText");
+const audioButtons = document.querySelectorAll(".audio-segment-btn");
 let isPlaying = false;
-let audio = new Audio(); // 使用 HTML5 Audio API
+let audio = new Audio();
 
-// 播放音频的函数
-function playAudio(src, progressBar) {
-    // 如果已经在播放，暂停当前音频
-    if (isPlaying && currentAudio) {
-        currentAudio.pause();
-        isPlaying = false;
-        return;
-    }
+// 音频文件和段落
+const audioFiles = [
+    { url: "audio1.mp3", text: "段落 1 的文本内容" },
+    { url: "audio2.mp3", text: "段落 2 的文本内容" },
+    { url: "audio3.mp3", text: "段落 3 的文本内容" }
+];
 
-    // 如果没有播放过音频，初始化
-    if (!isPlaying) {
-        audio.src = src;
+// 播放或暂停音频
+playPauseBtn.addEventListener("click", () => {
+    if (isPlaying) {
+        audio.pause();
+        playPauseBtn.textContent = "播放";
+    } else {
         audio.play();
-        isPlaying = true;
-        currentAudio = audio;
-        currentProgressBar = progressBar;
-        
-        // 更新进度条
-        audio.ontimeupdate = function () {
-            const progress = (audio.currentTime / audio.duration) * 100;
-            progressBar.value = progress;
-        };
-
-        // 音频播放结束
-        audio.onended = function () {
-            isPlaying = false;
-            currentProgressBar.value = 100;
-        };
+        playPauseBtn.textContent = "暂停";
     }
-}
+    isPlaying = !isPlaying;
+});
 
-// 处理进度条的拖动
-function handleProgressBarDrag(event) {
-    const progressBar = event.target;
-    const newTime = (event.offsetX / progressBar.offsetWidth) * audio.duration;
-    audio.currentTime = newTime;
-}
+// 音频进度更新
+audio.addEventListener("timeupdate", () => {
+    const progress = (audio.currentTime / audio.duration) * 100;
+    progressBar.value = progress;
+});
 
-// 给每个文段添加点击事件
-textItems.forEach(item => {
-    const progressBar = item.querySelector('.progress-bar');
-    const audioSrc = item.getAttribute('data-audio');
+// 拖拽进度条
+progressBar.addEventListener("input", () => {
+    const seekTime = (progressBar.value / 100) * audio.duration;
+    audio.currentTime = seekTime;
+});
 
-    // 点击播放音频
-    item.addEventListener('click', () => {
-        playAudio(audioSrc, progressBar);
-    });
+// 播放音频段落
+audioButtons.forEach((btn, index) => {
+    btn.addEventListener("click", () => {
+        // 更新参考文本
+        audioText.value = audioFiles[index].text;
 
-    // 添加拖动进度条的事件
-    progressBar.addEventListener('mousedown', (event) => {
-        document.addEventListener('mousemove', handleProgressBarDrag);
-        document.addEventListener('mouseup', () => {
-            document.removeEventListener('mousemove', handleProgressBarDrag);
-        });
+        // 停止当前音频并播放新的
+        if (audio.src !== audioFiles[index].url) {
+            audio.src = audioFiles[index].url;
+            audio.play();
+            playPauseBtn.textContent = "暂停";
+            isPlaying = true;
+        } else if (audio.paused) {
+            audio.play();
+            playPauseBtn.textContent = "暂停";
+            isPlaying = true;
+        } else {
+            audio.pause();
+            playPauseBtn.textContent = "播放";
+            isPlaying = false;
+        }
     });
 });
