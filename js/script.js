@@ -9,7 +9,7 @@ let audio = new Audio();
 // 音频文件和段落
 const audioFiles = [
     { url: "audio1.mp3", text: "段落 1 的文本内容" },
-    { url: "audio2.mp3", text: "段落 2 的文本内容" },
+    { url: "audio/audio2.mp3", text: "段落 2 的文本内容" },
     { url: "audio3.mp3", text: "段落 3 的文本内容" }
 ];
 
