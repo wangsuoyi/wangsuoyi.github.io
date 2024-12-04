@@ -79,7 +79,7 @@ body {
 /* 适应不同屏幕尺寸 */
 @media (max-width: 600px) {
   .text {
-      font-size: 14px;
+      font-size: 18px;
   }
 
   .audio-controls {
