@@ -73,9 +73,21 @@
     margin-top: 20px;
   }
   
-  #audio-progress {
+  .audio-progress {
     width: 80%;
-    margin: 0 10px;
+    margin-right: 10px;
+  }
+
+  .audio-progress-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin: 10px 0;
+  }
+  
+  .audio-time {
+    font-size: 14px;
+    color: #555;
   }
   
   #play-pause-btn {
