@@ -1,193 +1,46 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>音频播放网页</title>
-<link rel="stylesheet" href="css/styles.css"> <!-- 引用CSS文件 -->
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Audio Player</title>
+  <link rel="stylesheet" href="styles.css">
 </head>
 <body>
+  <header>
+    <h1>Audio Player</h1>
+  </header>
 
-<header>
-  <img src="images/logo.png" alt="Logo" id="logo">
-</header>
-
-<main>
-  <section class="content">
-    <p class="audio-text" data-audio="audio/audio1.mp3">这是一个测试用低音</p>
-    <button class="play-pause-btn">播放</button> <!-- 修改按钮名称为播放/暂停 -->
-    <div class="audio-progress-wrapper">
-      <input type="range" class="audio-progress" value="0" step="1" min="0" max="100">
-      <span class="audio-time">0:00</span>
+  <div class="content">
+    <!-- Audio Text 1 -->
+    <div class="audio-item">
+      <div class="audio-text" onclick="toggleAudio(1)">Audio Text 1</div>
+      <div class="audio-progress-wrapper">
+        <input type="range" class="audio-progress" id="progress-1" value="0" max="100" step="0.1" oninput="updateProgress(1)">
+        <span id="current-time-1" class="audio-time">0:00</span>
+      </div>
+      <button class="play-pause-btn" onclick="toggleAudio(1)" id="play-pause-btn-1">Play</button>
+      <audio id="audio-1" src="audio/audio1.mp3"></audio>
     </div>
 
-    <p class="audio-text" data-audio="audio/audio2.mp3">这是一支钢琴曲</p>
-    <button class="play-pause-btn">播放</button> <!-- 修改按钮名称为播放/暂停 -->
-    <div class="audio-progress-wrapper">
-      <input type="range" class="audio-progress" value="0" step="1" min="0" max="100">
-      <span class="audio-time">0:00</span>
+    <!-- Audio Text 2 -->
+    <div class="audio-item">
+      <div class="audio-text" onclick="toggleAudio(2)">Audio Text 2</div>
+      <div class="audio-progress-wrapper">
+        <input type="range" class="audio-progress" id="progress-2" value="0" max="100" step="0.1" oninput="updateProgress(2)">
+        <span id="current-time-2" class="audio-time">0:00</span>
+      </div>
+      <button class="play-pause-btn" onclick="toggleAudio(2)" id="play-pause-btn-2">Play</button>
+      <audio id="audio-2" src="audio/audio2.mp3"></audio>
     </div>
 
-    <p class="audio-text" data-audio="audio/audio1.mp3">这是一个测试用低音</p>
-    <button class="play-pause-btn">播放</button> <!-- 修改按钮名称为播放/暂停 -->
-    <div class="audio-progress-wrapper">
-      <input type="range" class="audio-progress" value="0" step="1" min="0" max="100">
-      <span class="audio-time">0:00</span>
-    </div>
+    <!-- Add more audio items as needed -->
+  </div>
 
-    <p class="audio-text" data-audio="audio/audio1.mp3">这是一个测试用低音</p>
-    <button class="play-pause-btn">播放</button> <!-- 修改按钮名称为播放/暂停 -->
-    <div class="audio-progress-wrapper">
-      <input type="range" class="audio-progress" value="0" step="1" min="0" max="100">
-      <span class="audio-time">0:00</span>
-    </div>
+  <footer>
+    <p>&copy; 2024 Audio Player</p>
+  </footer>
 
-    <p class="audio-text" data-audio="audio/audio1.mp3">这是一个测试用低音</p>
-    <button class="play-pause-btn">播放</button> <!-- 修改按钮名称为播放/暂停 -->
-    <div class="audio-progress-wrapper">
-      <input type="range" class="audio-progress" value="0" step="1" min="0" max="100">
-      <span class="audio-time">0:00</span>
-    </div>
-
-    <p class="audio-text" data-audio="audio/audio1.mp3">这是一个测试用低音</p>
-    <button class="play-pause-btn">播放</button> <!-- 修改按钮名称为播放/暂停 -->
-    <div class="audio-progress-wrapper">
-      <input type="range" class="audio-progress" value="0" step="1" min="0" max="100">
-      <span class="audio-time">0:00</span>
-    </div>
-
-    <p class="audio-text" data-audio="audio/audio1.mp3">这是一个测试用低音</p>
-    <button class="play-pause-btn">播放</button> <!-- 修改按钮名称为播放/暂停 -->
-    <div class="audio-progress-wrapper">
-      <input type="range" class="audio-progress" value="0" step="1" min="0" max="100">
-      <span class="audio-time">0:00</span>
-    </div>
-
-    <p class="audio-text" data-audio="audio/audio1.mp3">这是一个测试用低音</p>
-    <button class="play-pause-btn">播放</button> <!-- 修改按钮名称为播放/暂停 -->
-    <div class="audio-progress-wrapper">
-      <input type="range" class="audio-progress" value="0" step="1" min="0" max="100">
-      <span class="audio-time">0:00</span>
-    </div>
-
-    <p class="audio-text" data-audio="audio/audio1.mp3">这是一个测试用低音</p>
-    <button class="play-pause-btn">播放</button> <!-- 修改按钮名称为播放/暂停 -->
-    <div class="audio-progress-wrapper">
-      <input type="range" class="audio-progress" value="0" step="1" min="0" max="100">
-      <span class="audio-time">0:00</span>
-    </div>
-
-    <p class="audio-text" data-audio="audio/audio1.mp3">这是一个测试用低音</p>
-    <button class="play-pause-btn">播放</button> <!-- 修改按钮名称为播放/暂停 -->
-    <div class="audio-progress-wrapper">
-      <input type="range" class="audio-progress" value="0" step="1" min="0" max="100">
-      <span class="audio-time">0:00</span>
-    </div>
-
-    <p class="audio-text" data-audio="audio/audio1.mp3">这是一个测试用低音</p>
-    <button class="play-pause-btn">播放</button> <!-- 修改按钮名称为播放/暂停 -->
-    <div class="audio-progress-wrapper">
-      <input type="range" class="audio-progress" value="0" step="1" min="0" max="100">
-      <span class="audio-time">0:00</span>
-    </div>
-
-    <p class="audio-text" data-audio="audio/audio1.mp3">这是一个测试用低音</p>
-    <button class="play-pause-btn">播放</button> <!-- 修改按钮名称为播放/暂停 -->
-    <div class="audio-progress-wrapper">
-      <input type="range" class="audio-progress" value="0" step="1" min="0" max="100">
-      <span class="audio-time">0:00</span>
-    </div>
-
-    <p class="audio-text" data-audio="audio/audio1.mp3">这是一个测试用低音</p>
-    <button class="play-pause-btn">播放</button> <!-- 修改按钮名称为播放/暂停 -->
-    <div class="audio-progress-wrapper">
-      <input type="range" class="audio-progress" value="0" step="1" min="0" max="100">
-      <span class="audio-time">0:00</span>
-    </div>
-
-    <p class="audio-text" data-audio="audio/audio1.mp3">这是一个测试用低音</p>
-    <button class="play-pause-btn">播放</button> <!-- 修改按钮名称为播放/暂停 -->
-    <div class="audio-progress-wrapper">
-      <input type="range" class="audio-progress" value="0" step="1" min="0" max="100">
-      <span class="audio-time">0:00</span>
-    </div>
-
-    <p class="audio-text" data-audio="audio/audio1.mp3">这是一个测试用低音</p>
-    <button class="play-pause-btn">播放</button> <!-- 修改按钮名称为播放/暂停 -->
-    <div class="audio-progress-wrapper">
-      <input type="range" class="audio-progress" value="0" step="1" min="0" max="100">
-      <span class="audio-time">0:00</span>
-    </div>
-
-    <p class="audio-text" data-audio="audio/audio1.mp3">这是一个测试用低音</p>
-    <button class="play-pause-btn">播放</button> <!-- 修改按钮名称为播放/暂停 -->
-    <div class="audio-progress-wrapper">
-      <input type="range" class="audio-progress" value="0" step="1" min="0" max="100">
-      <span class="audio-time">0:00</span>
-    </div>
-
-    <p class="audio-text" data-audio="audio/audio1.mp3">这是一个测试用低音</p>
-    <button class="play-pause-btn">播放</button> <!-- 修改按钮名称为播放/暂停 -->
-    <div class="audio-progress-wrapper">
-      <input type="range" class="audio-progress" value="0" step="1" min="0" max="100">
-      <span class="audio-time">0:00</span>
-    </div>
-
-    <p class="audio-text" data-audio="audio/audio1.mp3">这是一个测试用低音</p>
-    <button class="play-pause-btn">播放</button> <!-- 修改按钮名称为播放/暂停 -->
-    <div class="audio-progress-wrapper">
-      <input type="range" class="audio-progress" value="0" step="1" min="0" max="100">
-      <span class="audio-time">0:00</span>
-    </div>
-
-    <p class="audio-text" data-audio="audio/audio1.mp3">这是一个测试用低音</p>
-    <button class="play-pause-btn">播放</button> <!-- 修改按钮名称为播放/暂停 -->
-    <div class="audio-progress-wrapper">
-      <input type="range" class="audio-progress" value="0" step="1" min="0" max="100">
-      <span class="audio-time">0:00</span>
-    </div>
-
-    <p class="audio-text" data-audio="audio/audio1.mp3">这是一个测试用低音</p>
-    <button class="play-pause-btn">播放</button> <!-- 修改按钮名称为播放/暂停 -->
-    <div class="audio-progress-wrapper">
-      <input type="range" class="audio-progress" value="0" step="1" min="0" max="100">
-      <span class="audio-time">0:00</span>
-    </div>
-
-    <p class="audio-text" data-audio="audio/audio1.mp3">这是一个测试用低音</p>
-    <button class="play-pause-btn">播放</button> <!-- 修改按钮名称为播放/暂停 -->
-    <div class="audio-progress-wrapper">
-      <input type="range" class="audio-progress" value="0" step="1" min="0" max="100">
-      <span class="audio-time">0:00</span>
-    </div>
-
-    <p class="audio-text" data-audio="audio/audio1.mp3">这是一个测试用低音</p>
-    <button class="play-pause-btn">播放</button> <!-- 修改按钮名称为播放/暂停 -->
-    <div class="audio-progress-wrapper">
-      <input type="range" class="audio-progress" value="0" step="1" min="0" max="100">
-      <span class="audio-time">0:00</span>
-    </div>
-
-    <p class="audio-text" data-audio="audio/audio1.mp3">这是一个测试用低音</p>
-    <button class="play-pause-btn">播放</button> <!-- 修改按钮名称为播放/暂停 -->
-    <div class="audio-progress-wrapper">
-      <input type="range" class="audio-progress" value="0" step="1" min="0" max="100">
-      <span class="audio-time">0:00</span>
-    </div>
-
-    <p class="audio-text" data-audio="audio/audio1.mp3">这是一个测试用低音</p>
-    <button class="play-pause-btn">播放</button> <!-- 修改按钮名称为播放/暂停 -->
-    <div class="audio-progress-wrapper">
-      <input type="range" class="audio-progress" value="0" step="1" min="0" max="100">
-      <span class="audio-time">0:00</span>
-    </div>
-  </section>
-</main>
-
-<footer>
-  <p>&copy; 2024 Wang Suoyi. All rights reserved.</p>
-</footer>
-
-<script src="js/script.js"></script> <!-- 引用JavaScript文件 -->
+  <script src="scripts.js"></script>
 </body>
 </html>
