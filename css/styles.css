@@ -36,7 +36,8 @@ h1 {
   transition: background-color 0.3s ease;
   word-wrap: break-word;
   width: 100%;
-  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
 }
 
 .text-item:hover {
@@ -48,22 +49,15 @@ h1 {
   font-size: 1.2em;
   color: #2c3e50;
   white-space: pre-wrap; /* 保证文本换行 */
-  word-break: break-word;
-  width: 100%;
-  display: block;
-  line-height: 1.6;
-  word-wrap: break-word;
 }
 
-/* 限制每行最多显示33个字符 */
-.text-item p {
-  width: calc(33ch); /* 使用字符单位，确保每行最多33个字符 */
-  overflow-wrap: break-word;
+.progress-container {
+  width: 100%;
+  margin-top: 10px;
 }
 
 .progress-bar {
   width: 100%;
-  margin-top: 10px;
   height: 8px;
   background-color: #bdc3c7;
   border-radius: 4px;

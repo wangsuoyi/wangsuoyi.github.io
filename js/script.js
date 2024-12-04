@@ -45,7 +45,7 @@ function handleProgressBarDrag(event) {
 textItems.forEach(item => {
     const progressBar = item.querySelector('.progress-bar');
     const audioSrc = item.getAttribute('data-audio');
-    
+
     item.addEventListener('click', () => {
         playAudio(audioSrc, progressBar);
     });

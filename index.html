@@ -1,33 +1,39 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>音频文段播放</title>
-    <link rel="stylesheet" href="css/styles.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>音频文段播放</title>
+<link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
-    <div class="container">
-        <h1>欢迎访问 wangsuoyi.github.io</h1>
+<div class="container">
+<h1>欢迎访问 wangsuoyi.github.io</h1>
 
-        <!-- 文本段 -->
-        <div class="text-container">
-            <div class="text-item" data-audio="audio/1.mp3">
-                <p>这是第一段文字。1111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111</p>
-                <input type="range" class="progress-bar" value="0" min="0" max="100" step="1" disabled>
-            </div>
-            <div class="text-item" data-audio="audio/audio2.mp3">
-                <p>这是第二段文字。</p>
-                <input type="range" class="progress-bar" value="0" min="0" max="100" step="1" disabled>
-            </div>
-            <div class="text-item" data-audio="audio/s3.mp3">
-                <p>这是第三段文字。</p>
-                <input type="range" class="progress-bar" value="0" min="0" max="100" step="1" disabled>
-            </div>
-            <!-- 更多文段可以按需添加 -->
+<!-- 文本段 -->
+<div class="text-container">
+    <div class="text-item" data-audio="audio/1.mp3">
+        <p>这是第一段文字。1111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111</p>
+        <div class="progress-container">
+            <input type="range" class="progress-bar" value="0" min="0" max="100" step="1" disabled>
         </div>
     </div>
+    <div class="text-item" data-audio="audio/audio2.mp3">
+        <p>这是第二段文字。</p>
+        <div class="progress-container">
+            <input type="range" class="progress-bar" value="0" min="0" max="100" step="1" disabled>
+        </div>
+    </div>
+    <div class="text-item" data-audio="audio/s3.mp3">
+        <p>这是第三段文字。</p>
+        <div class="progress-container">
+            <input type="range" class="progress-bar" value="0" min="0" max="100" step="1" disabled>
+        </div>
+    </div>
+    <!-- 更多文段可以按需添加 -->
+</div>
+</div>
 
-    <script src="js/script.js"></script>
+<script src="js/script.js"></script>
 </body>
 </html>
