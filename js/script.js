@@ -1,38 +1,34 @@
 document.addEventListener("DOMContentLoaded", function() {
-  const audioTexts = document.querySelectorAll('.audio-text');
-  const progressBars = document.querySelectorAll('.audio-progress');
-  const audioTimes = document.querySelectorAll('.audio-time');
-  const pauseButtons = document.querySelectorAll('.pause-btn'); // 获取所有暂停按钮
+  const audioText = document.querySelector('.audio-text');
+  const progressBar = document.querySelector('.audio-progress');
+  const audioTime = document.querySelector('.audio-time');
+  const playPauseBtn = document.querySelector('.play-pause-btn'); // 获取播放/暂停按钮
 
-  let currentAudio = null;  // 当前播放的音频
-  let currentProgressBar = null;  // 当前播放的进度条
-  let currentAudioTime = null;  // 当前音频时间显示
-  let isPlaying = false;    // 音频播放状态
+  let currentAudio = null; // 当前播放的音频
+  let isPlaying = false;   // 音频播放状态
 
-  audioTexts.forEach((text, index) => {
-    const progressBar = progressBars[index];
-    const audioTime = audioTimes[index];
-    const pauseButton = pauseButtons[index];  // 获取对应的暂停按钮
-
-    text.addEventListener('click', function() {
-      const audioFile = text.getAttribute('data-audio');
-      playAudio(audioFile, progressBar, audioTime);
-    });
-
-    progressBar.addEventListener('input', function() {
-      setAudioProgress(progressBar, index);
-    });
-
-    pauseButton.addEventListener('click', function() {
-      pauseAudio();
-    });
+  audioText.addEventListener('click', function() {
+    const audioFile = audioText.getAttribute('data-audio');
+    togglePlayPause(audioFile);  // 切换播放/暂停
   });
 
-  function playAudio(audioFile, progressBar, audioTime) {
+  progressBar.addEventListener('input', function() {
+    setAudioProgress(progressBar);
+  });
+
+  playPauseBtn.addEventListener('click', function() {
+    if (isPlaying) {
+      pauseAudio();
+    } else {
+      const audioFile = audioText.getAttribute('data-audio');
+      playAudio(audioFile);
+    }
+  });
+
+  function playAudio(audioFile) {
     // 如果有正在播放的音频，暂停它
     if (currentAudio && currentAudio.src !== audioFile) {
       currentAudio.pause();
-      resetProgressBar(currentProgressBar, currentAudioTime);
     }
 
     // 创建新的音频对象
@@ -46,9 +42,8 @@ document.addEventListener("DOMContentLoaded", function() {
 
     // 播放音频
     currentAudio.play();
-    currentProgressBar = progressBar;
-    currentAudioTime = audioTime;
     isPlaying = true;
+    playPauseBtn.textContent = '暂停'; // 更新按钮文本为“暂停”
     progressBar.value = 0;
     audioTime.textContent = '0:00';
   }
@@ -57,6 +52,7 @@ document.addEventListener("DOMContentLoaded", function() {
     if (currentAudio) {
       currentAudio.pause(); // 暂停音频
       isPlaying = false;
+      playPauseBtn.textContent = '播放'; // 更新按钮文本为“播放”
     }
   }
 
@@ -70,7 +66,7 @@ document.addEventListener("DOMContentLoaded", function() {
     audioTime.textContent = `${currentMinutes}:${currentSeconds < 10 ? '0' + currentSeconds : currentSeconds}`;
   }
 
-  function setAudioProgress(progressBar, index) {
+  function setAudioProgress(progressBar) {
     if (currentAudio) {
       const seekTime = (progressBar.value / 100) * currentAudio.duration;
       currentAudio.currentTime = seekTime;
@@ -79,6 +75,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
   function onAudioEnd(progressBar, audioTime) {
     isPlaying = false;
+    playPauseBtn.textContent = '播放'; // 更新按钮文本为“播放”
     resetProgressBar(progressBar, audioTime);
   }
 

@@ -1,134 +1,114 @@
 /* Reset some default browser styles */
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-  }
-  
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Arial', sans-serif;
+  background-color: #f4f4f4;
+  color: #333;
+  line-height: 1.6;
+}
+
+header {
+  background-color: #333;
+  padding: 20px;
+  text-align: center;
+}
+
+header img {
+  width: 120px;
+}
+
+h1 {
+  color: white;
+}
+
+.content {
+  max-width: 800px;
+  margin: 30px auto;
+  padding: 20px;
+  background-color: white;
+  border-radius: 10px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.audio-text {
+  display: block; 
+  margin: 10px 0; 
+  padding: 10px; 
+  border: 1px solid #ccc; 
+  background-color: #f9f9f9; 
+  border-radius: 5px; 
+  width: 100%; 
+  box-sizing: border-box; 
+  white-space: pre-wrap; 
+  word-wrap: break-word; 
+  font-size: 16px; 
+  line-height: 1.6; 
+  overflow: hidden; 
+  max-width: calc(33ch); 
+  word-break: break-all;
+}
+
+.audio-text:hover {
+  background-color: #e1e1e1;
+}
+
+footer {
+  text-align: center;
+  padding: 10px;
+  background-color: #333;
+  color: white;
+  margin-top: 40px;
+}
+
+/* Audio Player Styles */
+.play-pause-btn {
+  background-color: #333;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  cursor: pointer;
+  border-radius: 5px;
+  margin-top: 10px;
+  display: inline-block;
+}
+
+.play-pause-btn:hover {
+  background-color: #555;
+}
+
+.audio-progress {
+  width: 80%;
+  margin-right: 10px;
+}
+
+.audio-progress-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: 10px 0;
+}
+
+.audio-time {
+  font-size: 14px;
+  color: #555;
+}
+
+/* Mobile-friendly Design */
+@media (max-width: 600px) {
   body {
-    font-family: 'Arial', sans-serif;
-    background-color: #f4f4f4;
-    color: #333;
-    line-height: 1.6;
-  }
-  
-  header {
-    background-color: #333;
-    padding: 20px;
-    text-align: center;
-  }
-  
-  header img {
-    width: 120px;
-  }
-  
-  h1 {
-    color: white;
-  }
-  
-  .content {
-    max-width: 800px;
-    margin: 30px auto;
-    padding: 20px;
-    background-color: white;
-    border-radius: 10px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-  }
-  
-  .audio-text {
-    display: block; /* 确保它是一个块级元素 */
-    margin: 10px 0; /* 增加上下间距 */
-    padding: 10px; /* 给文本框添加内边距 */
-    border: 1px solid #ccc; /* 添加边框 */
-    background-color: #f9f9f9; /* 背景色 */
-    border-radius: 5px; /* 圆角 */
-    width: 100%; /* 宽度自适应 */
-    box-sizing: border-box; /* 包括内边距和边框 */
-    white-space: pre-wrap; /* 保证文本换行 */
-    word-wrap: break-word; /* 处理长单词 */
-    font-size: 16px; /* 字体大小 */
-    line-height: 1.6; /* 行高 */
-    overflow: hidden; /* 防止溢出 */
-    max-width: calc(33ch); /* 设定每行最多33个字符 */
-    word-break: break-all; /* 防止长单词超出行宽 */
-  }
-  
-  .audio-text:hover {
-    background-color: #e1e1e1;
-  }
-  
-  footer {
-    text-align: center;
     padding: 10px;
-    background-color: #333;
-    color: white;
-    margin-top: 40px;
-  }
-  
-  /* Audio Player Styles */
-  #audio-player {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin-top: 20px;
-  }
-  
-  .pause-btn {
-    background-color: #f84536; /* 红色背景 */
-    color: white;
-    border: none;
-    padding: 10px 20px;
-    cursor: pointer;
-    border-radius: 5px;
-    margin-top: 10px;
-    display: inline-block;
-  }
-  
-  .pause-btn:hover {
-    background-color: #e53935;
   }
 
-  .audio-progress {
-    width: 80%;
-    margin-right: 10px;
+  .content {
+    padding: 15px;
   }
 
-  .audio-progress-wrapper {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    margin: 10px 0;
+  .audio-text {
+    font-size: 16px;
   }
-  
-  .audio-time {
-    font-size: 14px;
-    color: #555;
-  }
-  
-  #play-pause-btn {
-    background-color: #333;
-    color: white;
-    padding: 10px 20px;
-    border: none;
-    cursor: pointer;
-  }
-  
-  #play-pause-btn:hover {
-    background-color: #555;
-  }
-  
-  /* Mobile-friendly Design */
-  @media (max-width: 600px) {
-    body {
-      padding: 10px;
-    }
-  
-    .content {
-      padding: 15px;
-    }
-  
-    .audio-text {
-      font-size: 16px;
-    }
-  }
-  
+}
