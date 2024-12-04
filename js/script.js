@@ -10,8 +10,6 @@ function playAudio(src, progressBar) {
     // 如果已经在播放，暂停当前音频
     if (isPlaying && currentAudio) {
         currentAudio.pause();
-        currentAudio.currentTime = 0;
-        currentProgressBar.value = 0;
         isPlaying = false;
         return;
     }
@@ -36,6 +34,13 @@ function playAudio(src, progressBar) {
     };
 }
 
+// 处理进度条的拖动
+function handleProgressBarDrag(event) {
+    const progressBar = event.target;
+    const newTime = (event.offsetX / progressBar.offsetWidth) * audio.duration;
+    audio.currentTime = newTime;
+}
+
 // 给每个文段添加点击事件
 textItems.forEach(item => {
     const progressBar = item.querySelector('.progress-bar');
@@ -43,5 +48,13 @@ textItems.forEach(item => {
     
     item.addEventListener('click', () => {
         playAudio(audioSrc, progressBar);
+    });
+
+    // 添加拖动进度条的事件
+    progressBar.addEventListener('mousedown', (event) => {
+        document.addEventListener('mousemove', handleProgressBarDrag);
+        document.addEventListener('mouseup', () => {
+            document.removeEventListener('mousemove', handleProgressBarDrag);
+        });
     });
 });
