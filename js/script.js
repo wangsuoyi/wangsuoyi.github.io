@@ -2,6 +2,7 @@ document.addEventListener("DOMContentLoaded", function() {
   const audioTexts = document.querySelectorAll('.audio-text');
   const progressBars = document.querySelectorAll('.audio-progress');
   const audioTimes = document.querySelectorAll('.audio-time');
+  const pauseButtons = document.querySelectorAll('.pause-btn'); // 获取所有暂停按钮
 
   let currentAudio = null;  // 当前播放的音频
   let currentProgressBar = null;  // 当前播放的进度条
@@ -11,6 +12,7 @@ document.addEventListener("DOMContentLoaded", function() {
   audioTexts.forEach((text, index) => {
     const progressBar = progressBars[index];
     const audioTime = audioTimes[index];
+    const pauseButton = pauseButtons[index];  // 获取对应的暂停按钮
 
     text.addEventListener('click', function() {
       const audioFile = text.getAttribute('data-audio');
@@ -19,6 +21,10 @@ document.addEventListener("DOMContentLoaded", function() {
 
     progressBar.addEventListener('input', function() {
       setAudioProgress(progressBar, index);
+    });
+
+    pauseButton.addEventListener('click', function() {
+      pauseAudio();
     });
   });
 
@@ -45,6 +51,13 @@ document.addEventListener("DOMContentLoaded", function() {
     isPlaying = true;
     progressBar.value = 0;
     audioTime.textContent = '0:00';
+  }
+
+  function pauseAudio() {
+    if (currentAudio) {
+      currentAudio.pause(); // 暂停音频
+      isPlaying = false;
+    }
   }
 
   function updateProgress(progressBar, audioTime) {
